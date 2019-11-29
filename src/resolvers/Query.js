@@ -18,6 +18,7 @@ const calculatePrice = async (parent, args, context, info) =>
 		return adjustedValue * exchangeRate;
 	}
 	 // Coindesk's API service is not always online
+	return -1;
 }
 
 module.exports = {info, calculatePrice}
