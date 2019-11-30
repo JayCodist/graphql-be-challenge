@@ -16,11 +16,13 @@ app.get('/', (req, res) =>
 {
 	res.setHeader('Content-Type', 'text/html');
 	res.setHeader('Access-Control-Allow-Origin', '*');
-	res.end(`<h1>Hello</h1>
+	res.end(`
+		<h1>Hello</h1>
 		<p>
-		Welcome to the GraphQL API for calculating the price of Bitcoin in Nigerian Naira. To use, visit 
-		<a href="${be_url}:${port}/graphql">${be_url}:${port}/graphql</a>
-		</p>`)
+			Welcome to the GraphQL API for calculating the price of Bitcoin in Nigerian Naira. To use, visit 
+			<a href="${be_url}:${port}/graphql">${be_url}:${port}/graphql</a>
+		</p>
+	`);
 });
 
 app.use('/graphql', graphqlHTTP({
