@@ -7,7 +7,7 @@ const app = express();
 
 const executableSchema = buildSchema(schema);
 
-const be_url = 'https://graphql-api-challenge.herokuapp.com/';
+const be_url = 'https://graphql-api-challenge.herokuapp.com';
 const port = process.env.PORT || 4000;
 
 const resolvers = { ...Query }
