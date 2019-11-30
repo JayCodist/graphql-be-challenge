@@ -1,13 +1,22 @@
-const { GraphQLServer } = require('graphql-yoga');
+const express = require('express');
+const graphqlHTTP = require('express-graphql');
+const { buildSchema } = require('graphql');
+const schema = require('./schema');
 const Query = require('./resolvers/Query');
+const app = express();
 
-const resolvers = { Query }
+const executableSchema = buildSchema(schema);
+
+const be_url = process.env.HOST || 'http://localhost';
+const port = process.env.PORT || 4000;
+
+const resolvers = { ...Query }
+
+app.use('/graphql', graphqlHTTP({
+	schema: executableSchema,
+	rootValue: resolvers,
+	graphiql: true
+}))
 
 
-const server = new GraphQLServer(
-	{
-		typeDefs: './src/schema.graphql', 
-		resolvers,
-	});
-
-server.start(() => console.log(`server started on http://localhost:4000`));
+app.listen(port, () => console.log(`server started on ${be_url}:${port}/graphql`));
