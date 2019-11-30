@@ -20,7 +20,7 @@ app.get('/', (req, res) =>
 		<h1>Hello</h1>
 		<p>
 			Welcome to the GraphQL API for calculating the price of Bitcoin in Nigerian Naira. To use, visit 
-			<a href="${be_url}:${port}/graphql">${be_url}:${port}/graphql</a>
+			<a href="${be_url}/graphql">${be_url}/graphql</a>
 		</p>
 	`);
 });
